@@ -6,8 +6,6 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-// import '@/styles/login-premium.css'
-// import { motion } from 'framer-motion'
 
 import { signInWithEmail } from '@/lib/auth'
 import { Button } from '@/components/ui/button'
@@ -25,7 +23,9 @@ import {
   Gem,
   Mountain,
   Truck,
-  Shield
+  Shield,
+  ArrowRight,
+  Star
 } from 'lucide-react'
 
 const loginSchema = z.object({
@@ -70,7 +70,6 @@ function LoginForm() {
         return
       }
 
-      // Successful login - redirect to intended page
       router.push(redirectTo)
       router.refresh()
     } catch (err) {
@@ -84,226 +83,362 @@ function LoginForm() {
     <div style={{
       minHeight: '100vh',
       display: 'flex',
-      background: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%)',
-      fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 75%, #475569 100%)',
+      fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      position: 'relative',
+      overflow: 'hidden'
     }}>
-      {/* Left Side - Industrial Imagery & Branding */}
+      {/* Background Effects */}
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: `
+          radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 40% 60%, rgba(139, 92, 246, 0.05) 0%, transparent 50%)
+        `,
+        pointerEvents: 'none'
+      }} />
+
+      {/* Left Panel - Premium Branding */}
       <div style={{
         flex: '1',
-        position: 'relative',
-        overflow: 'hidden',
-        background: 'linear-gradient(135deg, #1f2937 0%, #334155 50%, #1f2937 100%)',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: '3rem 4rem',
-        maxWidth: '56rem'
-      }} className="hidden lg:flex lg:flex-1 relative overflow-hidden">
-        {/* Background Pattern */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          opacity: 0.05,
-          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)',
-          backgroundSize: '40px 40px'
-        }}></div>
+        alignItems: 'flex-start',
+        padding: '4rem 6rem 4rem 4rem',
+        position: 'relative',
+        zIndex: 1,
+        maxWidth: '50%'
+      }} className="hidden lg:flex">
         
-        {/* Gradient Overlay */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(90deg, rgba(31,41,55,0.9) 0%, rgba(31,41,55,0.7) 50%, transparent 100%)'
-        }}></div>
-        
-        {/* Mining/Industrial Geometric Elements */}
-        <div style={{
-          position: 'absolute',
-          top: '5rem',
-          right: '5rem',
-          width: '8rem',
-          height: '8rem',
-          border: '1px solid rgba(245, 158, 11, 0.2)',
-          transform: 'rotate(45deg)'
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          bottom: '8rem',
-          right: '8rem',
-          width: '6rem',
-          height: '6rem',
-          border: '1px solid rgba(251, 191, 36, 0.3)',
-          transform: 'rotate(12deg)'
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          top: '50%',
-          right: '2.5rem',
-          width: '4rem',
-          height: '4rem',
-          background: 'rgba(245, 158, 11, 0.1)',
-          borderRadius: '50%'
-        }}></div>
-        
-        {/* Content */}
-        <div style={{
-          position: 'relative',
-          zIndex: 10,
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '3rem 4rem',
-          maxWidth: '32rem'
-        }}>
-          {/* Logo & Company */}
-          <div style={{ marginBottom: '3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
-              <div style={{
-                padding: '1rem',
-                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-                borderRadius: '1rem',
-                boxShadow: '0 25px 50px -12px rgba(245, 158, 11, 0.25)'
-              }}>
-                <Gem style={{ width: '2rem', height: '2rem', color: 'white' }} />
-              </div>
-              <div>
-                <h1 style={{
-                  fontSize: '1.875rem',
-                  fontWeight: '700',
-                  color: 'white',
-                  letterSpacing: '-0.025em',
-                  margin: 0
-                }}>Infinity Trade Mineral</h1>
-                <p style={{
-                  color: '#fcd34d',
-                  fontSize: '0.875rem',
-                  fontWeight: '500',
-                  letterSpacing: '0.05em',
-                  margin: 0
-                }}>PREMIUM MINING ENTERPRISE</p>
-              </div>
-            </div>
-            
+        {/* Company Logo & Title */}
+        <div style={{ marginBottom: '4rem' }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            marginBottom: '1.5rem'
+          }}>
             <div style={{
-              height: '1px',
-              background: 'linear-gradient(90deg, #f59e0b 0%, #fcd34d 50%, transparent 100%)',
-              marginBottom: '2rem'
-            }} />
-          </div>
-
-          {/* Main Tagline */}
-          <div style={{ marginBottom: '2.5rem' }}>
-            <h2 style={{
-              fontSize: 'clamp(2.5rem, 4vw, 3rem)',
-              fontWeight: '700',
-              color: 'white',
-              lineHeight: '1.2',
-              marginBottom: '1.5rem'
+              width: '3.5rem',
+              height: '3.5rem',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #92400e 100%)',
+              borderRadius: '1rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 20px 40px rgba(245, 158, 11, 0.3)',
+              position: 'relative'
             }}>
-              Industrial Excellence
-              <span style={{ display: 'block', color: '#fcd34d' }}>at Your Fingertips</span>
-            </h2>
-            <p style={{
-              color: '#d1d5db',
-              fontSize: '1.125rem',
-              lineHeight: '1.75'
-            }}>
-              Advanced enterprise management platform for premium mineral trading operations. 
-              Secure, powerful, and built for industry leaders.
-            </p>
+              <Gem style={{ 
+                width: '1.75rem', 
+                height: '1.75rem', 
+                color: 'white',
+                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+              }} />
+              <div style={{
+                position: 'absolute',
+                top: '-0.25rem',
+                right: '-0.25rem',
+                width: '1rem',
+                height: '1rem',
+                background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Star style={{ width: '0.5rem', height: '0.5rem', color: 'white' }} />
+              </div>
+            </div>
+            <div>
+              <h1 style={{
+                fontSize: '2rem',
+                fontWeight: '800',
+                background: 'linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                margin: 0,
+                letterSpacing: '-0.025em'
+              }}>
+                Infinity Trade Mineral
+              </h1>
+              <p style={{
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                color: '#fbbf24',
+                margin: 0,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase'
+              }}>
+                Premium Mining Enterprise
+              </p>
+            </div>
           </div>
+          
+          <div style={{
+            height: '2px',
+            background: 'linear-gradient(90deg, #f59e0b 0%, #fbbf24 50%, transparent 100%)',
+            borderRadius: '1px'
+          }} />
+        </div>
 
-          {/* Feature Icons */}
-          <div className="premium-features-grid">
-            <div className="premium-feature-card">
-              <div className="premium-feature-icon">
-                <Mountain />
+        {/* Main Heading */}
+        <div style={{ marginBottom: '3rem' }}>
+          <h2 style={{
+            fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
+            fontWeight: '900',
+            lineHeight: '1.1',
+            marginBottom: '1.5rem',
+            background: 'linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #e2e8f0 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}>
+            Industrial Excellence
+            <span style={{
+              display: 'block',
+              background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>
+              Redefined
+            </span>
+          </h2>
+          <p style={{
+            fontSize: '1.25rem',
+            lineHeight: '1.7',
+            color: '#cbd5e1',
+            maxWidth: '500px',
+            fontWeight: '400'
+          }}>
+            Next-generation enterprise platform for premium mineral trading operations. 
+            Engineered for industry leaders who demand excellence.
+          </p>
+        </div>
+
+        {/* Feature Grid */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '1.5rem',
+          width: '100%',
+          maxWidth: '500px'
+        }}>
+          {[
+            { icon: Mountain, title: 'Mining Operations', desc: 'Advanced Resource Management' },
+            { icon: Truck, title: 'Supply Chain', desc: 'Intelligent Logistics Control' },
+            { icon: Building2, title: 'Enterprise Suite', desc: 'Comprehensive Business Intelligence' },
+            { icon: Shield, title: 'Security First', desc: 'Military-Grade Data Protection' }
+          ].map((feature, index) => (
+            <div key={index} style={{
+              padding: '1.5rem',
+              background: 'rgba(255, 255, 255, 0.05)',
+              borderRadius: '1rem',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)'
+              e.currentTarget.style.transform = 'translateY(-2px)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)'
+              e.currentTarget.style.transform = 'translateY(0px)'
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                marginBottom: '0.75rem'
+              }}>
+                <div style={{
+                  width: '2.5rem',
+                  height: '2.5rem',
+                  background: 'linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.1) 100%)',
+                  borderRadius: '0.75rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid rgba(245, 158, 11, 0.3)'
+                }}>
+                  <feature.icon style={{ 
+                    width: '1.25rem', 
+                    height: '1.25rem', 
+                    color: '#fbbf24' 
+                  }} />
+                </div>
+                <h3 style={{
+                  fontSize: '1rem',
+                  fontWeight: '700',
+                  color: '#ffffff',
+                  margin: 0
+                }}>
+                  {feature.title}
+                </h3>
               </div>
-              <div className="premium-feature-text">
-                <h3>Mining Operations</h3>
-                <p>Resource Management</p>
-              </div>
+              <p style={{
+                fontSize: '0.875rem',
+                color: '#94a3b8',
+                margin: 0,
+                lineHeight: '1.5'
+              }}>
+                {feature.desc}
+              </p>
             </div>
-            
-            <div className="premium-feature-card">
-              <div className="premium-feature-icon">
-                <Truck />
-              </div>
-              <div className="premium-feature-text">
-                <h3>Logistics Control</h3>
-                <p>Supply Chain</p>
-              </div>
-            </div>
-            
-            <div className="premium-feature-card">
-              <div className="premium-feature-icon">
-                <Building2 />
-              </div>
-              <div className="premium-feature-text">
-                <h3>Enterprise Suite</h3>
-                <p>Business Intelligence</p>
-              </div>
-            </div>
-            
-            <div className="premium-feature-card">
-              <div className="premium-feature-icon">
-                <Shield />
-              </div>
-              <div className="premium-feature-text">
-                <h3>Secure Access</h3>
-                <p>Data Protection</p>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Right Side - Login Card */}
-      <div className="premium-right-panel">
-        <div className="premium-form-container">
+      {/* Right Panel - Login Form */}
+      <div style={{
+        flex: '1',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '2rem',
+        position: 'relative',
+        zIndex: 1
+      }}>
+        <div style={{
+          width: '100%',
+          maxWidth: '400px'
+        }}>
+          
           {/* Mobile Logo */}
-          <div className="premium-mobile-logo">
-            <div className="premium-mobile-logo-card">
-              <div className="premium-mobile-logo-icon">
-                <Gem />
-              </div>
-              <div className="premium-mobile-logo-text">
-                <h1>Infinity Trade Mineral</h1>
-                <p>PREMIUM ENTERPRISE</p>
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '2rem'
+          }} className="lg:hidden">
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.75rem',
+              padding: '1rem 1.5rem',
+              background: 'rgba(15, 23, 42, 0.9)',
+              borderRadius: '1rem',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(10px)'
+            }}>
+              <Gem style={{ width: '1.5rem', height: '1.5rem', color: '#fbbf24' }} />
+              <div>
+                <h1 style={{
+                  fontSize: '1.125rem',
+                  fontWeight: '700',
+                  color: '#ffffff',
+                  margin: 0
+                }}>
+                  Infinity Trade Mineral
+                </h1>
+                <p style={{
+                  fontSize: '0.75rem',
+                  color: '#fbbf24',
+                  margin: 0
+                }}>
+                  PREMIUM ENTERPRISE
+                </p>
               </div>
             </div>
           </div>
 
           {/* Login Card */}
-          <div className="premium-login-card">
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(20px)',
+            borderRadius: '2rem',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)',
+            overflow: 'hidden'
+          }}>
+            
             {/* Card Header */}
-            <div className="premium-card-header">
-              <div className="premium-header-icon">
-                <Building2 />
+            <div style={{
+              background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+              padding: '2rem',
+              textAlign: 'center',
+              position: 'relative'
+            }}>
+              <div style={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: `
+                  radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%)
+                `
+              }} />
+              
+              <div style={{
+                position: 'relative',
+                zIndex: 1
+              }}>
+                <div style={{
+                  width: '4rem',
+                  height: '4rem',
+                  background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                  borderRadius: '1.25rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  margin: '0 auto 1.5rem',
+                  boxShadow: '0 15px 30px rgba(245, 158, 11, 0.4)'
+                }}>
+                  <Building2 style={{ 
+                    width: '2rem', 
+                    height: '2rem', 
+                    color: 'white',
+                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.3))'
+                  }} />
+                </div>
+                
+                <h2 style={{
+                  fontSize: '1.5rem',
+                  fontWeight: '800',
+                  color: '#ffffff',
+                  margin: '0 0 0.5rem 0',
+                  letterSpacing: '-0.025em'
+                }}>
+                  Secure Access Portal
+                </h2>
+                <p style={{
+                  fontSize: '0.9rem',
+                  color: '#cbd5e1',
+                  margin: 0
+                }}>
+                  Enter your credentials to access the management system
+                </p>
               </div>
-              <h2 className="premium-header-title">
-                Secure Access Portal
-              </h2>
-              <p className="premium-header-subtitle">
-                Enter your credentials to access the management system
-              </p>
             </div>
 
             {/* Form Content */}
-            <div className="premium-form-content">
+            <div style={{ padding: '2rem' }}>
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="premium-form">
+                <form onSubmit={form.handleSubmit(onSubmit)} style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1.5rem'
+                }}>
                   {error && (
-                    <div>
-                      <Alert variant="destructive" className="border-red-200 bg-red-50">
-                        <AlertDescription className="text-red-700">{error}</AlertDescription>
-                      </Alert>
-                    </div>
+                    <Alert variant="destructive" style={{
+                      background: 'rgba(239, 68, 68, 0.1)',
+                      border: '1px solid rgba(239, 68, 68, 0.3)',
+                      borderRadius: '0.75rem'
+                    }}>
+                      <AlertDescription style={{ color: '#dc2626' }}>
+                        {error}
+                      </AlertDescription>
+                    </Alert>
                   )}
 
                   <FormField
@@ -311,17 +446,46 @@ function LoginForm() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold">Email Address</FormLabel>
+                        <FormLabel style={{
+                          fontSize: '0.875rem',
+                          fontWeight: '600',
+                          color: '#374151'
+                        }}>
+                          Email Address
+                        </FormLabel>
                         <FormControl>
-                          <div className="relative">
-                            <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                          <div style={{ position: 'relative' }}>
+                            <Mail style={{
+                              position: 'absolute',
+                              left: '1rem',
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                              width: '1.25rem',
+                              height: '1.25rem',
+                              color: '#9ca3af'
+                            }} />
                             <Input
                               {...field}
                               type="email"
                               placeholder="your.email@company.com"
                               disabled={isLoading}
                               autoComplete="email"
-                              className="pl-12 h-12 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-amber-500/20 transition-all duration-200"
+                              style={{
+                                height: '3rem',
+                                paddingLeft: '3rem',
+                                border: '2px solid #e5e7eb',
+                                borderRadius: '0.75rem',
+                                fontSize: '0.9rem',
+                                transition: 'all 0.2s ease'
+                              }}
+                              onFocus={(e) => {
+                                e.target.style.borderColor = '#f59e0b'
+                                e.target.style.boxShadow = '0 0 0 3px rgba(245, 158, 11, 0.1)'
+                              }}
+                              onBlur={(e) => {
+                                e.target.style.borderColor = '#e5e7eb'
+                                e.target.style.boxShadow = 'none'
+                              }}
                             />
                           </div>
                         </FormControl>
@@ -335,24 +499,69 @@ function LoginForm() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-gray-700 font-semibold">Password</FormLabel>
+                        <FormLabel style={{
+                          fontSize: '0.875rem',
+                          fontWeight: '600',
+                          color: '#374151'
+                        }}>
+                          Password
+                        </FormLabel>
                         <FormControl>
-                          <div className="relative">
-                            <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                          <div style={{ position: 'relative' }}>
+                            <Lock style={{
+                              position: 'absolute',
+                              left: '1rem',
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                              width: '1.25rem',
+                              height: '1.25rem',
+                              color: '#9ca3af'
+                            }} />
                             <Input
                               {...field}
                               type={showPassword ? "text" : "password"}
                               placeholder="Enter your secure password"
                               disabled={isLoading}
                               autoComplete="current-password"
-                              className="pl-12 pr-12 h-12 border-gray-300 rounded-lg focus:border-amber-500 focus:ring-amber-500/20 transition-all duration-200"
+                              style={{
+                                height: '3rem',
+                                paddingLeft: '3rem',
+                                paddingRight: '3rem',
+                                border: '2px solid #e5e7eb',
+                                borderRadius: '0.75rem',
+                                fontSize: '0.9rem',
+                                transition: 'all 0.2s ease'
+                              }}
+                              onFocus={(e) => {
+                                e.target.style.borderColor = '#f59e0b'
+                                e.target.style.boxShadow = '0 0 0 3px rgba(245, 158, 11, 0.1)'
+                              }}
+                              onBlur={(e) => {
+                                e.target.style.borderColor = '#e5e7eb'
+                                e.target.style.boxShadow = 'none'
+                              }}
                             />
                             <button
                               type="button"
                               onClick={() => setShowPassword(!showPassword)}
-                              className="absolute right-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400 hover:text-gray-600 transition-colors"
+                              style={{
+                                position: 'absolute',
+                                right: '1rem',
+                                top: '50%',
+                                transform: 'translateY(-50%)',
+                                background: 'none',
+                                border: 'none',
+                                cursor: 'pointer',
+                                color: '#9ca3af',
+                                transition: 'color 0.2s ease'
+                              }}
+                              onMouseEnter={(e) => e.currentTarget.style.color = '#6b7280'}
+                              onMouseLeave={(e) => e.currentTarget.style.color = '#9ca3af'}
                             >
-                              {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                              {showPassword ? 
+                                <EyeOff style={{ width: '1.25rem', height: '1.25rem' }} /> : 
+                                <Eye style={{ width: '1.25rem', height: '1.25rem' }} />
+                              }
                             </button>
                           </div>
                         </FormControl>
@@ -362,29 +571,54 @@ function LoginForm() {
                   />
 
                   {/* Remember Me & Forgot Password */}
-                  <div className="flex items-center justify-between">
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    marginTop: '0.5rem'
+                  }}>
                     <FormField
                       control={form.control}
                       name="rememberMe"
                       render={({ field }) => (
-                        <FormItem className="flex items-center space-x-2">
+                        <FormItem style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.5rem'
+                        }}>
                           <FormControl>
                             <Checkbox
                               checked={field.value}
                               onCheckedChange={field.onChange}
-                              className="data-[state=checked]:bg-amber-500 data-[state=checked]:border-amber-500"
+                              style={{
+                                width: '1rem',
+                                height: '1rem'
+                              }}
                             />
                           </FormControl>
-                          <FormLabel className="text-sm text-gray-600 font-normal">
+                          <FormLabel style={{
+                            fontSize: '0.875rem',
+                            color: '#6b7280',
+                            fontWeight: '400',
+                            margin: 0
+                          }}>
                             Remember me
                           </FormLabel>
                         </FormItem>
                       )}
                     />
-                    
+
                     <Link
                       href="/auth/forgot-password"
-                      className="text-sm text-amber-600 hover:text-amber-700 font-medium transition-colors"
+                      style={{
+                        fontSize: '0.875rem',
+                        color: '#d97706',
+                        textDecoration: 'none',
+                        fontWeight: '500',
+                        transition: 'color 0.2s ease'
+                      }}
+                      onMouseEnter={(e) => e.currentTarget.style.color = '#92400e'}
+                      onMouseLeave={(e) => e.currentTarget.style.color = '#d97706'}
                     >
                       Forgot password?
                     </Link>
@@ -392,24 +626,72 @@ function LoginForm() {
 
                   <Button
                     type="submit"
-                    className="w-full h-12 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5"
                     disabled={isLoading}
+                    style={{
+                      width: '100%',
+                      height: '3rem',
+                      background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                      border: 'none',
+                      borderRadius: '0.75rem',
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      color: 'white',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 10px 20px rgba(245, 158, 11, 0.3)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '0.5rem'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isLoading) {
+                        e.currentTarget.style.background = 'linear-gradient(135deg, #d97706 0%, #92400e 100%)'
+                        e.currentTarget.style.transform = 'translateY(-2px)'
+                        e.currentTarget.style.boxShadow = '0 15px 30px rgba(245, 158, 11, 0.4)'
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isLoading) {
+                        e.currentTarget.style.background = 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)'
+                        e.currentTarget.style.transform = 'translateY(0px)'
+                        e.currentTarget.style.boxShadow = '0 10px 20px rgba(245, 158, 11, 0.3)'
+                      }
+                    }}
                   >
-                    {isLoading && (
-                      <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                    {isLoading ? (
+                      <>
+                        <Loader2 style={{ width: '1.25rem', height: '1.25rem', animation: 'spin 1s linear infinite' }} />
+                        Authenticating...
+                      </>
+                    ) : (
+                      <>
+                        Access Management Portal
+                        <ArrowRight style={{ width: '1.25rem', height: '1.25rem' }} />
+                      </>
                     )}
-                    {isLoading ? 'Authenticating...' : 'Access Management Portal'}
                   </Button>
                 </form>
               </Form>
 
               {/* Additional Links */}
-              <div className="mt-6 text-center">
-                <p className="text-sm text-gray-500">
+              <div style={{
+                marginTop: '1.5rem',
+                textAlign: 'center'
+              }}>
+                <p style={{
+                  fontSize: '0.875rem',
+                  color: '#6b7280',
+                  margin: 0
+                }}>
                   Need access?{' '}
                   <Link
                     href="/auth/register"
-                    className="font-medium text-amber-600 hover:text-amber-700 transition-colors"
+                    style={{
+                      color: '#d97706',
+                      textDecoration: 'none',
+                      fontWeight: '500'
+                    }}
                   >
                     Contact Administrator
                   </Link>
@@ -419,12 +701,28 @@ function LoginForm() {
           </div>
 
           {/* Footer */}
-          <div className="mt-8 text-center">
-            <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
-            <p className="text-xs text-gray-500 font-medium">
+          <div style={{
+            marginTop: '2rem',
+            textAlign: 'center'
+          }}>
+            <div style={{
+              height: '1px',
+              background: 'linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%)',
+              marginBottom: '1rem'
+            }} />
+            <p style={{
+              fontSize: '0.75rem',
+              color: '#94a3b8',
+              margin: '0 0 0.25rem 0',
+              fontWeight: '500'
+            }}>
               © 2024 Infinity Trade Mineral – Internal Use Only
             </p>
-            <p className="text-xs text-gray-400 mt-1">
+            <p style={{
+              fontSize: '0.75rem',
+              color: '#64748b',
+              margin: 0
+            }}>
               Secure Enterprise Access • Authorized Personnel Only
             </p>
           </div>
