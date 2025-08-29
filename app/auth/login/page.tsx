@@ -80,26 +80,6 @@ function LoginForm() {
     }
   }
 
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.6,
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-    },
-  }
-
   return (
     <div className="min-h-screen flex bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Left Side - Industrial Imagery & Branding */}
@@ -123,12 +103,17 @@ function LoginForm() {
         {/* Content */}
         <motion.div 
           className="relative z-10 flex flex-col justify-center px-12 xl:px-16 max-w-2xl"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
         >
           {/* Logo & Company */}
-          <motion.div className="mb-12" variants={itemVariants}>
+          <motion.div 
+            className="mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="flex items-center gap-4 mb-6">
               <div className="p-4 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl shadow-2xl shadow-amber-500/25">
                 <Gem className="h-8 w-8 text-white" />
@@ -147,7 +132,12 @@ function LoginForm() {
           </motion.div>
 
           {/* Main Tagline */}
-          <motion.div className="mb-10" variants={itemVariants}>
+          <motion.div 
+            className="mb-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             <h2 className="text-4xl xl:text-5xl font-bold text-white leading-tight mb-6">
               Industrial Excellence
               <span className="block text-amber-400">at Your Fingertips</span>
@@ -159,7 +149,12 @@ function LoginForm() {
           </motion.div>
 
           {/* Feature Icons */}
-          <motion.div className="grid grid-cols-2 gap-6" variants={itemVariants}>
+          <motion.div 
+            className="grid grid-cols-2 gap-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+          >
             <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
               <div className="p-2 bg-amber-500/20 rounded-lg">
                 <Mountain className="h-6 w-6 text-amber-400" />
@@ -207,12 +202,17 @@ function LoginForm() {
       <div className="flex-1 flex items-center justify-center px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
         <motion.div 
           className="w-full max-w-md"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
         >
           {/* Mobile Logo */}
-          <motion.div className="lg:hidden text-center mb-8" variants={itemVariants}>
+          <motion.div 
+            className="lg:hidden text-center mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-xl">
               <Gem className="h-6 w-6 text-amber-400" />
               <div className="text-left">
@@ -227,7 +227,9 @@ function LoginForm() {
           {/* Login Card */}
           <motion.div 
             className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden"
-            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
             {/* Card Header */}
             <div className="px-8 pt-8 pb-6 bg-gradient-to-r from-gray-900 to-gray-800">
@@ -373,7 +375,12 @@ function LoginForm() {
           </motion.div>
 
           {/* Footer */}
-          <motion.div className="mt-8 text-center" variants={itemVariants}>
+          <motion.div 
+            className="mt-8 text-center"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+          >
             <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
             <p className="text-xs text-gray-500 font-medium">
               © 2024 Infinity Trade Mineral – Internal Use Only
@@ -385,7 +392,6 @@ function LoginForm() {
         </motion.div>
       </div>
     </div>
-
   )
 }
 
