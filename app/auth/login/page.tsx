@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
+// import '@/styles/login-premium.css'
 // import { motion } from 'framer-motion'
 
 import { signInWithEmail } from '@/lib/auth'
@@ -80,97 +81,182 @@ function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      background: 'linear-gradient(135deg, #1f2937 0%, #374151 50%, #1f2937 100%)',
+      fontFamily: 'Inter, system-ui, -apple-system, sans-serif'
+    }}>
       {/* Left Side - Industrial Imagery & Branding */}
-      <div className="hidden lg:flex lg:flex-1 relative overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
+      <div style={{
+        flex: '1',
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'linear-gradient(135deg, #1f2937 0%, #334155 50%, #1f2937 100%)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '3rem 4rem',
+        maxWidth: '56rem'
+      }} className="hidden lg:flex lg:flex-1 relative overflow-hidden">
         {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }} />
-        </div>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          opacity: 0.05,
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}></div>
         
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-transparent" />
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(90deg, rgba(31,41,55,0.9) 0%, rgba(31,41,55,0.7) 50%, transparent 100%)'
+        }}></div>
         
         {/* Mining/Industrial Geometric Elements */}
-        <div className="absolute top-20 right-20 w-32 h-32 border border-amber-500/20 rotate-45" />
-        <div className="absolute bottom-32 right-32 w-24 h-24 border border-amber-400/30 rotate-12" />
-        <div className="absolute top-1/2 right-10 w-16 h-16 bg-amber-500/10 rounded-full" />
+        <div style={{
+          position: 'absolute',
+          top: '5rem',
+          right: '5rem',
+          width: '8rem',
+          height: '8rem',
+          border: '1px solid rgba(245, 158, 11, 0.2)',
+          transform: 'rotate(45deg)'
+        }}></div>
+        <div style={{
+          position: 'absolute',
+          bottom: '8rem',
+          right: '8rem',
+          width: '6rem',
+          height: '6rem',
+          border: '1px solid rgba(251, 191, 36, 0.3)',
+          transform: 'rotate(12deg)'
+        }}></div>
+        <div style={{
+          position: 'absolute',
+          top: '50%',
+          right: '2.5rem',
+          width: '4rem',
+          height: '4rem',
+          background: 'rgba(245, 158, 11, 0.1)',
+          borderRadius: '50%'
+        }}></div>
         
         {/* Content */}
-        <div className="relative z-10 flex flex-col justify-center px-12 xl:px-16 max-w-2xl">
+        <div style={{
+          position: 'relative',
+          zIndex: 10,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '3rem 4rem',
+          maxWidth: '32rem'
+        }}>
           {/* Logo & Company */}
-          <div className="mb-12">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="p-4 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl shadow-2xl shadow-amber-500/25">
-                <Gem className="h-8 w-8 text-white" />
+          <div style={{ marginBottom: '3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div style={{
+                padding: '1rem',
+                background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                borderRadius: '1rem',
+                boxShadow: '0 25px 50px -12px rgba(245, 158, 11, 0.25)'
+              }}>
+                <Gem style={{ width: '2rem', height: '2rem', color: 'white' }} />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-white tracking-tight">
-                  Infinity Trade Mineral
-                </h1>
-                <p className="text-amber-200 text-sm font-medium tracking-wide">
-                  PREMIUM MINING ENTERPRISE
-                </p>
+                <h1 style={{
+                  fontSize: '1.875rem',
+                  fontWeight: '700',
+                  color: 'white',
+                  letterSpacing: '-0.025em',
+                  margin: 0
+                }}>Infinity Trade Mineral</h1>
+                <p style={{
+                  color: '#fcd34d',
+                  fontSize: '0.875rem',
+                  fontWeight: '500',
+                  letterSpacing: '0.05em',
+                  margin: 0
+                }}>PREMIUM MINING ENTERPRISE</p>
               </div>
             </div>
             
-            <div className="h-px bg-gradient-to-r from-amber-500 via-amber-400 to-transparent mb-8" />
+            <div style={{
+              height: '1px',
+              background: 'linear-gradient(90deg, #f59e0b 0%, #fcd34d 50%, transparent 100%)',
+              marginBottom: '2rem'
+            }} />
           </div>
 
           {/* Main Tagline */}
-          <div className="mb-10">
-            <h2 className="text-4xl xl:text-5xl font-bold text-white leading-tight mb-6">
+          <div style={{ marginBottom: '2.5rem' }}>
+            <h2 style={{
+              fontSize: 'clamp(2.5rem, 4vw, 3rem)',
+              fontWeight: '700',
+              color: 'white',
+              lineHeight: '1.2',
+              marginBottom: '1.5rem'
+            }}>
               Industrial Excellence
-              <span className="block text-amber-400">at Your Fingertips</span>
+              <span style={{ display: 'block', color: '#fcd34d' }}>at Your Fingertips</span>
             </h2>
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p style={{
+              color: '#d1d5db',
+              fontSize: '1.125rem',
+              lineHeight: '1.75'
+            }}>
               Advanced enterprise management platform for premium mineral trading operations. 
               Secure, powerful, and built for industry leaders.
             </p>
           </div>
 
           {/* Feature Icons */}
-          <div className="grid grid-cols-2 gap-6">
-            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-              <div className="p-2 bg-amber-500/20 rounded-lg">
-                <Mountain className="h-6 w-6 text-amber-400" />
+          <div className="premium-features-grid">
+            <div className="premium-feature-card">
+              <div className="premium-feature-icon">
+                <Mountain />
               </div>
-              <div>
-                <p className="text-white font-semibold">Mining Operations</p>
-                <p className="text-gray-400 text-sm">Resource Management</p>
-              </div>
-            </div>
-            
-            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-              <div className="p-2 bg-amber-500/20 rounded-lg">
-                <Truck className="h-6 w-6 text-amber-400" />
-              </div>
-              <div>
-                <p className="text-white font-semibold">Logistics Control</p>
-                <p className="text-gray-400 text-sm">Supply Chain</p>
+              <div className="premium-feature-text">
+                <h3>Mining Operations</h3>
+                <p>Resource Management</p>
               </div>
             </div>
             
-            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-              <div className="p-2 bg-amber-500/20 rounded-lg">
-                <Building2 className="h-6 w-6 text-amber-400" />
+            <div className="premium-feature-card">
+              <div className="premium-feature-icon">
+                <Truck />
               </div>
-              <div>
-                <p className="text-white font-semibold">Enterprise Suite</p>
-                <p className="text-gray-400 text-sm">Business Intelligence</p>
+              <div className="premium-feature-text">
+                <h3>Logistics Control</h3>
+                <p>Supply Chain</p>
               </div>
             </div>
             
-            <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
-              <div className="p-2 bg-amber-500/20 rounded-lg">
-                <Shield className="h-6 w-6 text-amber-400" />
+            <div className="premium-feature-card">
+              <div className="premium-feature-icon">
+                <Building2 />
               </div>
-              <div>
-                <p className="text-white font-semibold">Secure Access</p>
-                <p className="text-gray-400 text-sm">Data Protection</p>
+              <div className="premium-feature-text">
+                <h3>Enterprise Suite</h3>
+                <p>Business Intelligence</p>
+              </div>
+            </div>
+            
+            <div className="premium-feature-card">
+              <div className="premium-feature-icon">
+                <Shield />
+              </div>
+              <div className="premium-feature-text">
+                <h3>Secure Access</h3>
+                <p>Data Protection</p>
               </div>
             </div>
           </div>
@@ -178,42 +264,40 @@ function LoginForm() {
       </div>
 
       {/* Right Side - Login Card */}
-      <div className="flex-1 flex items-center justify-center px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
-        <div className="w-full max-w-md">
+      <div className="premium-right-panel">
+        <div className="premium-form-container">
           {/* Mobile Logo */}
-          <div className="lg:hidden text-center mb-8">
-            <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-xl">
-              <Gem className="h-6 w-6 text-amber-400" />
-              <div className="text-left">
-                <h1 className="text-xl font-bold text-white">
-                  Infinity Trade Mineral
-                </h1>
-                <p className="text-amber-200 text-xs">PREMIUM ENTERPRISE</p>
+          <div className="premium-mobile-logo">
+            <div className="premium-mobile-logo-card">
+              <div className="premium-mobile-logo-icon">
+                <Gem />
+              </div>
+              <div className="premium-mobile-logo-text">
+                <h1>Infinity Trade Mineral</h1>
+                <p>PREMIUM ENTERPRISE</p>
               </div>
             </div>
           </div>
 
           {/* Login Card */}
-          <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
+          <div className="premium-login-card">
             {/* Card Header */}
-            <div className="px-8 pt-8 pb-6 bg-gradient-to-r from-gray-900 to-gray-800">
-              <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl shadow-lg shadow-amber-500/25 mb-4">
-                  <Building2 className="h-8 w-8 text-white" />
-                </div>
-                <h2 className="text-2xl font-bold text-white mb-2">
-                  Secure Access Portal
-                </h2>
-                <p className="text-gray-300 text-sm">
-                  Enter your credentials to access the management system
-                </p>
+            <div className="premium-card-header">
+              <div className="premium-header-icon">
+                <Building2 />
               </div>
+              <h2 className="premium-header-title">
+                Secure Access Portal
+              </h2>
+              <p className="premium-header-subtitle">
+                Enter your credentials to access the management system
+              </p>
             </div>
 
             {/* Form Content */}
-            <div className="px-8 py-8">
+            <div className="premium-form-content">
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="premium-form">
                   {error && (
                     <div>
                       <Alert variant="destructive" className="border-red-200 bg-red-50">
