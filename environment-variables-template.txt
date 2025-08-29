@@ -1,0 +1,78 @@
+# Environment Variables Template for Infinity Trade Mineral
+# Copy this file to .env.local for development
+# Configure these variables in Vercel for production deployment
+
+# ================================
+# SUPABASE CONFIGURATION
+# ================================
+
+# Public Supabase URL (safe to expose to client)
+NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
+
+# Public Supabase Anonymous Key (safe to expose to client)
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+# Server-only Supabase Service Role Key (NEVER expose to client)
+# This key has admin privileges - keep it secret!
+SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+# ================================
+# APPLICATION CONFIGURATION
+# ================================
+
+# Application environment
+NODE_ENV=development
+
+# Application base URL (for production)
+NEXT_PUBLIC_APP_URL=https://admin.infinitytrademineral.id
+
+# ================================
+# OPTIONAL CONFIGURATION
+# ================================
+
+# Database direct connection (if needed for migrations)
+# SUPABASE_DB_URL=postgresql://postgres:[password]@db.[project-id].supabase.co:5432/postgres
+
+# Custom authentication redirect URL
+# NEXT_PUBLIC_AUTH_REDIRECT_URL=https://admin.infinitytrademineral.id/dashboard
+
+# File upload size limits (in bytes)
+# NEXT_PUBLIC_MAX_FILE_SIZE=10485760
+
+# ================================
+# PRODUCTION DEPLOYMENT NOTES
+# ================================
+
+# For Vercel deployment:
+# 1. Go to Vercel Dashboard → Your Project → Settings → Environment Variables
+# 2. Add each variable above with production values
+# 3. Make sure to mark SUPABASE_SERVICE_ROLE_KEY as "Server-only"
+# 4. Public variables (NEXT_PUBLIC_*) can be marked as "Client and Server"
+
+# For Supabase production setup:
+# 1. Create new Supabase project for production
+# 2. Get URL and keys from Project Settings → API
+# 3. Run database-schema.sql in SQL Editor
+# 4. Create storage buckets: 'documents', 'shipment-documents'
+# 5. Configure storage policies as documented
+
+# Security considerations:
+# - Never commit .env.local to Git
+# - Use different Supabase projects for development and production
+# - Regularly rotate service role keys
+# - Monitor API usage and rate limits
+# - Enable Row Level Security (RLS) on all tables
+
+# ================================
+# DEVELOPMENT SETUP
+# ================================
+
+# 1. Copy this file to .env.local
+# 2. Replace placeholder values with your Supabase project details
+# 3. Ensure .env.local is in .gitignore
+# 4. Restart development server after changes
+
+# Example development values:
+# NEXT_PUBLIC_SUPABASE_URL=https://abcdefghijklmnop.supabase.co
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIs...
+# SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIs...
