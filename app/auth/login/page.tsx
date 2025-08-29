@@ -82,7 +82,7 @@ function LoginForm() {
       justifyContent: 'center',
       background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 75%, #475569 100%)',
       fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      padding: '1rem'
+      padding: 'clamp(0.5rem, 2vw, 1rem)'
     }}>
       {/* Background Effects */}
       <div style={{
@@ -101,7 +101,7 @@ function LoginForm() {
       {/* Login Card Container */}
       <div style={{
         width: '100%',
-        maxWidth: '420px',
+        maxWidth: '440px',
         position: 'relative',
         zIndex: 1
       }}>
@@ -117,22 +117,6 @@ function LoginForm() {
             gap: '0.75rem',
             marginBottom: '0.5rem'
           }}>
-            <div style={{
-              width: '2.5rem',
-              height: '2.5rem',
-              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-              borderRadius: '0.75rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              boxShadow: '0 10px 20px rgba(245, 158, 11, 0.3)'
-            }}>
-              <Gem style={{ 
-                width: '1.25rem', 
-                height: '1.25rem', 
-                color: 'white'
-              }} />
-            </div>
             <h1 style={{
               fontSize: '1.5rem',
               fontWeight: '700',
@@ -197,7 +181,7 @@ function LoginForm() {
           </div>
 
           {/* Form Content */}
-          <div style={{ padding: '2rem' }}>
+          <div style={{ padding: 'clamp(1.5rem, 4vw, 2rem)' }}>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} style={{
                 display: 'flex',
@@ -248,10 +232,12 @@ function LoginForm() {
                             style={{
                               height: '3rem',
                               paddingLeft: '3rem',
+                              paddingRight: '1rem',
                               border: '2px solid #e5e7eb',
                               borderRadius: '0.75rem',
                               fontSize: '0.9rem',
-                              transition: 'all 0.2s ease'
+                              transition: 'all 0.2s ease',
+                              width: '100%'
                             }}
                             onFocus={(e) => {
                               e.target.style.borderColor = '#f59e0b'
@@ -305,7 +291,8 @@ function LoginForm() {
                               border: '2px solid #e5e7eb',
                               borderRadius: '0.75rem',
                               fontSize: '0.9rem',
-                              transition: 'all 0.2s ease'
+                              transition: 'all 0.2s ease',
+                              width: '100%'
                             }}
                             onFocus={(e) => {
                               e.target.style.borderColor = '#f59e0b'
