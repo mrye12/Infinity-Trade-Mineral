@@ -101,9 +101,10 @@ function LoginForm() {
       {/* Login Card Container */}
       <div style={{
         width: '100%',
-        maxWidth: '440px',
+        maxWidth: '380px',
         position: 'relative',
-        zIndex: 1
+        zIndex: 1,
+        margin: '0 1rem'
       }}>
         
         {/* Company Logo */}
@@ -142,23 +143,23 @@ function LoginForm() {
           {/* Card Header */}
           <div style={{
             background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-            padding: '1.5rem',
+            padding: '1.25rem 1.5rem',
             textAlign: 'center'
           }}>
             <div style={{
-              width: '3rem',
-              height: '3rem',
+              width: '2.5rem',
+              height: '2.5rem',
               background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-              borderRadius: '1rem',
+              borderRadius: '0.75rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 1rem',
-              boxShadow: '0 10px 20px rgba(245, 158, 11, 0.4)'
+              margin: '0 auto 0.75rem',
+              boxShadow: '0 8px 16px rgba(245, 158, 11, 0.4)'
             }}>
               <Building2 style={{ 
-                width: '1.5rem', 
-                height: '1.5rem', 
+                width: '1.25rem', 
+                height: '1.25rem', 
                 color: 'white'
               }} />
             </div>
@@ -181,12 +182,12 @@ function LoginForm() {
           </div>
 
           {/* Form Content */}
-          <div style={{ padding: 'clamp(1.5rem, 4vw, 2rem)' }}>
+          <div style={{ padding: '1.5rem' }}>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} style={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '1.5rem'
+                gap: '1.25rem'
               }}>
                 {error && (
                   <Alert variant="destructive" style={{
