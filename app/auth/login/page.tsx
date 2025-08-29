@@ -118,6 +118,22 @@ function LoginForm() {
             gap: '0.75rem',
             marginBottom: '0.5rem'
           }}>
+            <div style={{
+              width: '2.5rem',
+              height: '2.5rem',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+              borderRadius: '0.75rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 8px 16px rgba(245, 158, 11, 0.4)'
+            }}>
+              <Building2 style={{ 
+                width: '1.25rem', 
+                height: '1.25rem', 
+                color: 'white'
+              }} />
+            </div>
             <h1 style={{
               fontSize: '1.5rem',
               fontWeight: '700',
@@ -146,24 +162,7 @@ function LoginForm() {
             padding: '1.25rem 1.5rem',
             textAlign: 'center'
           }}>
-            <div style={{
-              width: '2.5rem',
-              height: '2.5rem',
-              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-              borderRadius: '0.75rem',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 0.75rem',
-              boxShadow: '0 8px 16px rgba(245, 158, 11, 0.4)'
-            }}>
-              <Building2 style={{ 
-                width: '1.25rem', 
-                height: '1.25rem', 
-                color: 'white'
-              }} />
-            </div>
-            
+
             <h2 style={{
               fontSize: '1.25rem',
               fontWeight: '700',
@@ -288,7 +287,7 @@ function LoginForm() {
                             style={{
                               height: '3rem',
                               paddingLeft: '3rem',
-                              paddingRight: '3rem',
+                              paddingRight: '2.5rem',
                               border: '2px solid #e5e7eb',
                               borderRadius: '0.75rem',
                               fontSize: '0.9rem',
@@ -309,7 +308,7 @@ function LoginForm() {
                             onClick={() => setShowPassword(!showPassword)}
                             style={{
                               position: 'absolute',
-                              right: '1rem',
+                              right: '0.75rem',
                               top: '50%',
                               transform: 'translateY(-50%)',
                               background: 'none',
