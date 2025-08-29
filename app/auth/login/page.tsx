@@ -66,37 +66,93 @@ function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
-      <div className="w-full max-w-md space-y-6">
-        {/* Company Logo and Header */}
-        <div className="text-center space-y-2">
-          <div className="flex justify-center">
-            <div className="p-3 bg-primary/10 rounded-full">
-              <Building2 className="h-8 w-8 text-primary" />
+    <div className="min-h-screen flex">
+      {/* Left Side - Branding */}
+      <div className="hidden lg:flex lg:flex-1 lg:flex-col lg:justify-center lg:px-12 xl:px-24 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:60px_60px]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20" />
+        
+        <div className="relative z-10 max-w-md">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-3 bg-white/10 backdrop-blur-sm rounded-2xl border border-white/20">
+              <Building2 className="h-8 w-8 text-white" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-white tracking-tight">
+                Infinity Trade Mineral
+              </h1>
+              <p className="text-slate-300 text-sm">
+                Internal Management System
+              </p>
             </div>
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">
-            Infinity Trade Mineral
-          </h1>
-          <p className="text-muted-foreground">
-            Internal Portal Access
-          </p>
+          
+          <div className="space-y-4">
+            <h2 className="text-3xl font-bold text-white leading-tight">
+              Manage your business operations with confidence
+            </h2>
+            <p className="text-slate-300 text-lg leading-relaxed">
+              Comprehensive platform for invoices, shipments, inventory management, and document control.
+            </p>
+            
+            <div className="space-y-3 pt-6">
+              <div className="flex items-center gap-3 text-slate-300">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                <span>Invoice & Financial Management</span>
+              </div>
+              <div className="flex items-center gap-3 text-slate-300">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
+                <span>Shipment Tracking & Logistics</span>
+              </div>
+              <div className="flex items-center gap-3 text-slate-300">
+                <div className="w-2 h-2 bg-amber-400 rounded-full"></div>
+                <span>Office Stock & Inventory</span>
+              </div>
+              <div className="flex items-center gap-3 text-slate-300">
+                <div className="w-2 h-2 bg-rose-400 rounded-full"></div>
+                <span>Document & Contract Management</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Login Form */}
-        <Card>
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-xl font-medium">Sign in to your account</CardTitle>
-            <CardDescription>
-              Enter your email and password to access the portal
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
+      {/* Right Side - Login Form */}
+      <div className="flex-1 flex flex-col justify-center px-6 py-12 lg:px-8 bg-white dark:bg-slate-950">
+        <div className="sm:mx-auto sm:w-full sm:max-w-md">
+          {/* Mobile Logo */}
+          <div className="lg:hidden flex justify-center mb-8">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-slate-900 dark:bg-white rounded-xl">
+                <Building2 className="h-6 w-6 text-white dark:text-slate-900" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Infinity Trade Mineral
+                </h1>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  Internal Portal
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Welcome back
+            </h2>
+            <p className="mt-2 text-slate-600 dark:text-slate-400">
+              Sign in to access your dashboard
+            </p>
+          </div>
+
+          {/* Login Form */}
+          <div className="bg-white dark:bg-slate-900 py-8 px-6 shadow-xl rounded-2xl border border-slate-200 dark:border-slate-800">
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 {error && (
-                  <Alert variant="destructive">
-                    <AlertDescription>{error}</AlertDescription>
+                  <Alert variant="destructive" className="border-red-200 bg-red-50 dark:bg-red-950 dark:border-red-800">
+                    <AlertDescription className="text-red-700 dark:text-red-400">{error}</AlertDescription>
                   </Alert>
                 )}
 
@@ -105,14 +161,15 @@ function LoginForm() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel className="text-slate-700 dark:text-slate-300 font-medium">Email address</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
                           type="email"
-                          placeholder="Enter your email"
+                          placeholder="name@company.com"
                           disabled={isLoading}
                           autoComplete="email"
+                          className="h-11 border-slate-300 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 rounded-lg"
                         />
                       </FormControl>
                       <FormMessage />
@@ -125,7 +182,7 @@ function LoginForm() {
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel className="text-slate-700 dark:text-slate-300 font-medium">Password</FormLabel>
                       <FormControl>
                         <Input
                           {...field}
@@ -133,6 +190,7 @@ function LoginForm() {
                           placeholder="Enter your password"
                           disabled={isLoading}
                           autoComplete="current-password"
+                          className="h-11 border-slate-300 dark:border-slate-600 focus:border-blue-500 dark:focus:border-blue-400 rounded-lg"
                         />
                       </FormControl>
                       <FormMessage />
@@ -142,39 +200,44 @@ function LoginForm() {
 
                 <Button
                   type="submit"
-                  className="w-full"
+                  className="w-full h-11 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-200"
                   disabled={isLoading}
                 >
                   {isLoading && (
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                   )}
-                  Sign In
+                  {isLoading ? 'Signing in...' : 'Sign in to dashboard'}
                 </Button>
               </form>
             </Form>
 
-            {/* Register Link - Only for admin invites */}
+            {/* Register Link */}
             <div className="mt-6 text-center">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-slate-600 dark:text-slate-400">
                 Need an account?{' '}
                 <Link
                   href="/auth/register"
-                  className="text-primary font-medium hover:underline"
+                  className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                 >
-                  Register here
+                  Contact your administrator
                 </Link>
               </p>
             </div>
-          </CardContent>
-        </Card>
+          </div>
 
-        {/* Footer */}
-        <div className="text-center text-xs text-muted-foreground">
-          <p>Authorized personnel only</p>
-          <p>© 2024 Infinity Trade Mineral. All rights reserved.</p>
+          {/* Footer */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Authorized personnel only • Secure access required
+            </p>
+            <p className="text-xs text-slate-400 dark:text-slate-500 mt-1">
+              © 2024 Infinity Trade Mineral. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </div>
+
   )
 }
 
