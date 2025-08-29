@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { motion } from 'framer-motion'
+// import { motion } from 'framer-motion'
 
 import { signInWithEmail } from '@/lib/auth'
 import { Button } from '@/components/ui/button'
@@ -100,19 +100,9 @@ function LoginForm() {
         <div className="absolute top-1/2 right-10 w-16 h-16 bg-amber-500/10 rounded-full" />
         
         {/* Content */}
-        <motion.div 
-          className="relative z-10 flex flex-col justify-center px-12 xl:px-16 max-w-2xl"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="relative z-10 flex flex-col justify-center px-12 xl:px-16 max-w-2xl">
           {/* Logo & Company */}
-          <motion.div 
-            className="mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div className="mb-12">
             <div className="flex items-center gap-4 mb-6">
               <div className="p-4 bg-gradient-to-br from-amber-500 to-amber-600 rounded-2xl shadow-2xl shadow-amber-500/25">
                 <Gem className="h-8 w-8 text-white" />
@@ -128,15 +118,10 @@ function LoginForm() {
             </div>
             
             <div className="h-px bg-gradient-to-r from-amber-500 via-amber-400 to-transparent mb-8" />
-          </motion.div>
+          </div>
 
           {/* Main Tagline */}
-          <motion.div 
-            className="mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          <div className="mb-10">
             <h2 className="text-4xl xl:text-5xl font-bold text-white leading-tight mb-6">
               Industrial Excellence
               <span className="block text-amber-400">at Your Fingertips</span>
@@ -145,15 +130,10 @@ function LoginForm() {
               Advanced enterprise management platform for premium mineral trading operations. 
               Secure, powerful, and built for industry leaders.
             </p>
-          </motion.div>
+          </div>
 
           {/* Feature Icons */}
-          <motion.div 
-            className="grid grid-cols-2 gap-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-          >
+          <div className="grid grid-cols-2 gap-6">
             <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all duration-300">
               <div className="p-2 bg-amber-500/20 rounded-lg">
                 <Mountain className="h-6 w-6 text-amber-400" />
@@ -193,25 +173,15 @@ function LoginForm() {
                 <p className="text-gray-400 text-sm">Data Protection</p>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Right Side - Login Card */}
       <div className="flex-1 flex items-center justify-center px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white">
-        <motion.div 
-          className="w-full max-w-md"
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+        <div className="w-full max-w-md">
           {/* Mobile Logo */}
-          <motion.div 
-            className="lg:hidden text-center mb-8"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+          <div className="lg:hidden text-center mb-8">
             <div className="inline-flex items-center gap-3 p-4 bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-xl">
               <Gem className="h-6 w-6 text-amber-400" />
               <div className="text-left">
@@ -221,15 +191,10 @@ function LoginForm() {
                 <p className="text-amber-200 text-xs">PREMIUM ENTERPRISE</p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Login Card */}
-          <motion.div 
-            className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
+          <div className="bg-white rounded-3xl shadow-2xl border border-gray-200 overflow-hidden">
             {/* Card Header */}
             <div className="px-8 pt-8 pb-6 bg-gradient-to-r from-gray-900 to-gray-800">
               <div className="text-center">
@@ -250,15 +215,11 @@ function LoginForm() {
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   {error && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <div>
                       <Alert variant="destructive" className="border-red-200 bg-red-50">
                         <AlertDescription className="text-red-700">{error}</AlertDescription>
                       </Alert>
-                    </motion.div>
+                    </div>
                   )}
 
                   <FormField
@@ -371,15 +332,10 @@ function LoginForm() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Footer */}
-          <motion.div 
-            className="mt-8 text-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
-          >
+          <div className="mt-8 text-center">
             <div className="h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent mb-4" />
             <p className="text-xs text-gray-500 font-medium">
               © 2024 Infinity Trade Mineral – Internal Use Only
@@ -387,8 +343,8 @@ function LoginForm() {
             <p className="text-xs text-gray-400 mt-1">
               Secure Enterprise Access • Authorized Personnel Only
             </p>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   )
