@@ -54,59 +54,144 @@ function LoginForm() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-700 relative px-4">
-      {/* Background subtle glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(251,191,36,0.05),transparent_40%),radial-gradient(circle_at_80%_80%,rgba(96,165,250,0.05),transparent_40%)]" />
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '1rem',
+      position: 'relative',
+      fontFamily: 'Inter, system-ui, sans-serif'
+    }}>
+      
+      {/* Background Effects */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        background: 'radial-gradient(circle at 20% 20%, rgba(251,191,36,0.08) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(96,165,250,0.08) 0%, transparent 40%)',
+        pointerEvents: 'none'
+      }} />
 
-      {/* Container */}
-      <div className="w-full max-w-sm relative z-10 space-y-6">
+      {/* Main Container */}
+      <div style={{
+        width: '100%',
+        maxWidth: '380px',
+        position: 'relative',
+        zIndex: 10,
+        margin: '0 1rem'
+      }}>
         
-        {/* Logo */}
-        <div className="text-center">
-          <div className="inline-flex items-center gap-2 mb-2">
-            <div className="w-10 h-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 shadow-lg shadow-amber-500/30">
-              <Building2 className="w-5 h-5 text-white" />
+        {/* Company Logo */}
+        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '0.5rem'
+          }}>
+            <div style={{
+              width: '40px',
+              height: '40px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+              boxShadow: '0 10px 25px rgba(245, 158, 11, 0.3)'
+            }}>
+              <Building2 style={{ width: '20px', height: '20px', color: 'white' }} />
             </div>
-            <h1 className="text-lg font-semibold text-white">Infinity Trade Mineral</h1>
+            <h1 style={{
+              fontSize: '1.125rem',
+              fontWeight: '600',
+              color: 'white',
+              margin: 0
+            }}>
+              Infinity Trade Mineral
+            </h1>
           </div>
         </div>
 
-        {/* Card */}
-        <div className="bg-white/95 backdrop-blur-xl rounded-xl border border-slate-200 shadow-xl overflow-hidden">
+        {/* Login Card */}
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.95)',
+          backdropFilter: 'blur(16px)',
+          borderRadius: '16px',
+          border: '1px solid rgba(226, 232, 240, 0.8)',
+          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.25)',
+          overflow: 'hidden'
+        }}>
           
           {/* Header */}
-          <div className="bg-slate-900 px-6 py-4 text-center">
-            <h2 className="text-base font-semibold text-white">Login</h2>
-            <p className="text-xs text-slate-400">Enter your credentials to continue</p>
+          <div style={{
+            background: '#0f172a',
+            padding: '1.5rem',
+            textAlign: 'center'
+          }}>
+            <h2 style={{
+              fontSize: '1rem',
+              fontWeight: '600',
+              color: 'white',
+              margin: '0 0 0.25rem 0'
+            }}>
+              Login
+            </h2>
+            <p style={{
+              fontSize: '0.875rem',
+              color: '#94a3b8',
+              margin: 0
+            }}>
+              Enter your credentials to continue
+            </p>
           </div>
 
-          {/* Form */}
-          <div className="px-6 py-6">
+          {/* Form Content */}
+          <div style={{ padding: '2rem' }}>
             <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+              <form onSubmit={form.handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                 {error && (
                   <Alert variant="destructive">
                     <AlertDescription>{error}</AlertDescription>
                   </Alert>
                 )}
 
-                {/* Email */}
+                {/* Email Field */}
                 <FormField
                   control={form.control}
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email</FormLabel>
+                      <FormLabel style={{ fontSize: '0.875rem', fontWeight: '500', color: '#374151' }}>
+                        Email
+                      </FormLabel>
                       <FormControl>
-                        <div className="relative">
-                          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <div style={{ position: 'relative' }}>
+                          <Mail style={{
+                            position: 'absolute',
+                            left: '12px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            width: '16px',
+                            height: '16px',
+                            color: '#9ca3af'
+                          }} />
                           <Input
                             {...field}
                             type="email"
                             placeholder="your.email@company.com"
                             disabled={isLoading}
                             autoComplete="email"
-                            className="pl-9"
+                            style={{
+                              width: '100%',
+                              height: '44px',
+                              paddingLeft: '40px',
+                              paddingRight: '12px',
+                              border: '1px solid #d1d5db',
+                              borderRadius: '8px',
+                              fontSize: '0.875rem',
+                              outline: 'none'
+                            }}
                           />
                         </div>
                       </FormControl>
@@ -115,31 +200,59 @@ function LoginForm() {
                   )}
                 />
 
-                {/* Password */}
+                {/* Password Field */}
                 <FormField
                   control={form.control}
                   name="password"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Password</FormLabel>
+                      <FormLabel style={{ fontSize: '0.875rem', fontWeight: '500', color: '#374151' }}>
+                        Password
+                      </FormLabel>
                       <FormControl>
-                        <div className="relative">
-                          <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                        <div style={{ position: 'relative' }}>
+                          <Lock style={{
+                            position: 'absolute',
+                            left: '12px',
+                            top: '50%',
+                            transform: 'translateY(-50%)',
+                            width: '16px',
+                            height: '16px',
+                            color: '#9ca3af'
+                          }} />
                           <Input
                             {...field}
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             disabled={isLoading}
                             autoComplete="current-password"
-                            className="pl-9 pr-9"
+                            style={{
+                              width: '100%',
+                              height: '44px',
+                              paddingLeft: '40px',
+                              paddingRight: '40px',
+                              border: '1px solid #d1d5db',
+                              borderRadius: '8px',
+                              fontSize: '0.875rem',
+                              outline: 'none'
+                            }}
                           />
                           <button
                             type="button"
                             onClick={() => setShowPassword(!showPassword)}
                             aria-label="Toggle password visibility"
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                            style={{
+                              position: 'absolute',
+                              right: '12px',
+                              top: '50%',
+                              transform: 'translateY(-50%)',
+                              background: 'none',
+                              border: 'none',
+                              color: '#9ca3af',
+                              cursor: 'pointer'
+                            }}
                           >
-                            {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                            {showPassword ? <EyeOff style={{ width: '16px', height: '16px' }} /> : <Eye style={{ width: '16px', height: '16px' }} />}
                           </button>
                         </div>
                       </FormControl>
@@ -149,34 +262,68 @@ function LoginForm() {
                 />
 
                 {/* Remember & Forgot */}
-                <div className="flex items-center justify-between">
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'space-between'
+                }}>
                   <FormField
                     control={form.control}
                     name="rememberMe"
                     render={({ field }) => (
-                      <FormItem className="flex items-center gap-2">
+                      <FormItem style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <FormControl>
                           <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                         </FormControl>
-                        <FormLabel className="text-sm font-normal text-slate-600">Remember me</FormLabel>
+                        <FormLabel style={{
+                          fontSize: '0.875rem',
+                          fontWeight: '400',
+                          color: '#6b7280',
+                          margin: 0
+                        }}>
+                          Remember me
+                        </FormLabel>
                       </FormItem>
                     )}
                   />
 
-                  <Link href="/auth/forgot-password" className="text-sm text-amber-600 hover:text-amber-700 font-medium">
+                  <Link
+                    href="/auth/forgot-password"
+                    style={{
+                      fontSize: '0.875rem',
+                      color: '#d97706',
+                      textDecoration: 'none',
+                      fontWeight: '500'
+                    }}
+                  >
                     Forgot password?
                   </Link>
                 </div>
 
-                {/* Button */}
+                {/* Login Button */}
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full h-11 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition"
+                  style={{
+                    width: '100%',
+                    height: '44px',
+                    background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+                    color: 'white',
+                    fontWeight: '500',
+                    borderRadius: '8px',
+                    border: 'none',
+                    boxShadow: '0 4px 12px rgba(245, 158, 11, 0.4)',
+                    cursor: isLoading ? 'not-allowed' : 'pointer',
+                    fontSize: '0.875rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '0.5rem'
+                  }}
                 >
                   {isLoading ? (
                     <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <Loader2 style={{ width: '16px', height: '16px', animation: 'spin 1s linear infinite' }} />
                       Signing in...
                     </>
                   ) : (
@@ -186,10 +333,22 @@ function LoginForm() {
               </form>
             </Form>
 
-            {/* Footer Links */}
-            <div className="mt-4 text-center text-sm text-slate-500">
+            {/* Footer */}
+            <div style={{
+              marginTop: '1.5rem',
+              textAlign: 'center',
+              fontSize: '0.875rem',
+              color: '#6b7280'
+            }}>
               Need access?{' '}
-              <Link href="/auth/register" className="text-amber-600 hover:text-amber-700 font-medium">
+              <Link
+                href="/auth/register"
+                style={{
+                  color: '#d97706',
+                  textDecoration: 'none',
+                  fontWeight: '500'
+                }}
+              >
                 Contact Administrator
               </Link>
             </div>
@@ -197,8 +356,17 @@ function LoginForm() {
         </div>
 
         {/* Copyright */}
-        <div className="text-center">
-          <p className="text-xs text-slate-500">© 2024 Infinity Trade Mineral</p>
+        <div style={{
+          textAlign: 'center',
+          marginTop: '1.5rem'
+        }}>
+          <p style={{
+            fontSize: '0.75rem',
+            color: '#94a3b8',
+            margin: 0
+          }}>
+            © 2024 Infinity Trade Mineral
+          </p>
         </div>
       </div>
     </div>
